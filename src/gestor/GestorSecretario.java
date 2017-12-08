@@ -12,10 +12,10 @@ import java.util.ArrayList;
  */
 public class GestorSecretario {
 
-    private static MultiSecretario secretarioNuevo = new MultiSecretario();
+//    private static MultiSecretario secretarioNuevo = new MultiSecretario();
 
     public void registrarSecretario(String nombre, String apellido1, String apellido2, String telefono, String usuario, String clave) throws ClassNotFoundException, SQLException, Exception {
-
+        MultiSecretario secretarioNuevo = new MultiSecretario();
         secretarioNuevo.crear(nombre, apellido1, apellido2, telefono, usuario, clave);
     }
 
