@@ -58,4 +58,20 @@ public class MultiQuerellante {
         return listQuerellante;
 
     }
+
+    public Querellante logIn(String cedula) throws Exception {
+        Querellante miQuerellante = null;
+
+        String query = "select cedula from [dbo].[tQuerellante] where cedula = '" + cedula + "'";
+
+        conn = new Conector().getConector();
+
+        ResultSet rs = conn.ejecutarSQL(query, true);
+        
+        while (rs.next()) {
+            miQuerellante = new Querellante(rs.getString("cedula"));
+        }
+
+        return miQuerellante;
+    }
 }

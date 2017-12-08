@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 
 public class MultiJuez {
     private AccesoBD conn;
+    
+    
     public void crear(String nombre, String apellido1, String apellido2, String cedula, String telefono, String numero_sala, String usuario, String clave) {
 
         String query;

@@ -11,14 +11,13 @@ import java.util.ArrayList;
  */
 public class GestorJuez {
 
-    private static MultiJuez juezNuevo = new MultiJuez();
-
     public void registrarJuez(String nombre, String apellido1, String apellido2, String cedula, String telefono, String numero_sala, String usuario, String clave) throws ClassNotFoundException, SQLException, Exception {
-
+        MultiJuez juezNuevo = new MultiJuez();
         juezNuevo.crear(nombre, apellido1, apellido2, cedula, telefono, numero_sala, usuario, clave);
     }
 
     public ArrayList<Juez> listarJuez() throws Exception {
+        MultiJuez juezNuevo = new MultiJuez();
         ArrayList<Juez> listJuezMulti = juezNuevo.listarJuez();
 
         return listJuezMulti;

@@ -11,8 +11,6 @@ import java.util.ArrayList;
  */
 public class GestorQuerellante {
 
-//    private static MultiQuerellante querellanteNuevo = new MultiQuerellante();
-
     public void registarQuerellante(String nombre, String apellido1, String apellido2, String cedula, String telefono, String direccion) throws ClassNotFoundException, SQLException, Exception {
         MultiQuerellante querellanteNuevo = new MultiQuerellante();
         querellanteNuevo.registarQuerellante(nombre, apellido1, apellido2, cedula, telefono, direccion);
@@ -24,6 +22,13 @@ public class GestorQuerellante {
 
         return listQuerellanteMulti;
 
+    }
+    
+    public Querellante inicioSesion(String cedula) throws Exception{
+        MultiQuerellante querellanteNuevo = new MultiQuerellante();
+        Querellante miQuerellante = querellanteNuevo.logIn(cedula);
+        
+        return miQuerellante;
     }
 
 }
