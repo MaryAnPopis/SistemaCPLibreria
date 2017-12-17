@@ -13,6 +13,10 @@ public class Querellante extends Persona {
         this.direccion = direccion;
     }
 
+    public Querellante(int id_querellante) {
+        this.id_querellante = id_querellante;
+    }
+
     public Querellante(String cedula) {
         this.cedula = cedula;
     }

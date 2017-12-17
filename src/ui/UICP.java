@@ -5,9 +5,8 @@
  */
 package ui;
 
-import gestor.GestorSecretario;
-import gestor.GestorQuerellante;
-import gestor.GestorJuez;
+
+import gestor.*;
 import objetos.Juez;
 import objetos.Querellante;
 import objetos.Secretario;
@@ -16,7 +15,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -29,6 +30,7 @@ public class UICP {
     static GestorJuez gestorJuez = new GestorJuez();
     static GestorQuerellante gestorQuerellante = new GestorQuerellante();
     static GestorSecretario gestorSecretario = new GestorSecretario();
+    static GestorCaso gestorCaso = new GestorCaso();
 
     public static void main(String args[]) throws IOException, ClassNotFoundException, Exception {
         mostrarMenu();
@@ -46,6 +48,7 @@ public class UICP {
             out.println("6. Listar secreatari(a)");
             out.println("4. Listar querellante");
             out.println("0. Salir");
+             out.println("10. Registrar caso");
             out.println("Digite la opcion");
             opcion = Integer.parseInt(in.readLine());
             procesarOpcion(opcion);
@@ -79,12 +82,47 @@ public class UICP {
             case 6:
                 listarSecretario();
                 break;
-
+                
+            case 10:
+                registrarCaso();
+                break;
             default:
                 out.println("Opción invalida");
 
         }
     }
+    
+    public static void registrarCaso() throws java.io.IOException, ClassNotFoundException, Exception {
+        String nombre, apellido1, apellido2;
+
+        out.println("Numero: ");
+        nombre = in.readLine();
+        out.println("Cedula querellante: ");
+        apellido1 = in.readLine();
+        out.println("descripcion: ");
+        apellido2 = in.readLine();
+        
+        int estado = 1;  
+        LocalDate fecha = LocalDate.now();
+        int miJuez = idJuez();
+        
+        Querellante quere = gestorCaso.querellanteIDByCedula(apellido1);
+        System.out.println(nombre +","+ quere.getId_querellante() +", ID RANDOM DE JUEZ = "+miJuez+","+ estado+","+ fecha +","+ apellido2);
+        //gestorCaso.registrarCaso(nombre, quere,miJuez, estado, fecha , apellido2);
+
+    }
+    
+    public static int idJuez() throws Exception{
+        int randomID = 0;
+        GestorCaso gestor = new GestorCaso();
+        ArrayList<Integer> listJuezMulti = gestor.idJueces();
+        
+        Random randomizer = new Random();
+        randomID = listJuezMulti.get(randomizer.nextInt( listJuezMulti.size()));
+        
+        return randomID;
+    }
+    
 
     public static void registarJuez() throws java.io.IOException, ClassNotFoundException, Exception {
         String nombre, apellido1, apellido2, cedula, telefono, numero_sala, usuario, clave;

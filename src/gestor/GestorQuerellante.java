@@ -23,12 +23,18 @@ public class GestorQuerellante {
         return listQuerellanteMulti;
 
     }
-    
-    public Querellante inicioSesion(String cedula) throws Exception{
+
+    public Querellante inicioSesion(String cedula) throws Exception {
         MultiQuerellante querellanteNuevo = new MultiQuerellante();
         Querellante miQuerellante = querellanteNuevo.logIn(cedula);
-        
+
         return miQuerellante;
     }
 
+    public String nombreByCedula(String cedula) throws Exception {
+        MultiQuerellante querellanteNuevo = new MultiQuerellante();
+        String nombreQuere = querellanteNuevo.nombreByCedula(cedula);
+
+        return nombreQuere;
+    }
 }

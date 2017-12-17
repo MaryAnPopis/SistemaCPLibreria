@@ -27,6 +27,10 @@ public class Juez extends Persona {
         this.clave = clave;
     }
 
+    public Juez(int id_juez) {
+        this.id_juez = id_juez;
+    }
+
     public int getId_juez() {
         return id_juez;
     }

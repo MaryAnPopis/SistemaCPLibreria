@@ -28,7 +28,7 @@ public class MultiJuez {
         } catch (Exception ex) {
             Logger.getLogger(MultiJuez.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        conn.finalize();
     }
 
     public ArrayList<Juez> listarJuez() throws Exception {
@@ -55,8 +55,9 @@ public class MultiJuez {
 
             listJuez.add(juez);
         }
+        conn.finalize();
         return listJuez;
-
+        
     }
     
     /**
@@ -83,7 +84,7 @@ public class MultiJuez {
         while (rs.next()) {
             miJuez = new Juez(rs.getString("usuario"), rs.getString("clave"));  
         }
-        
+        conn.finalize();
         return miJuez;
     }
 }
