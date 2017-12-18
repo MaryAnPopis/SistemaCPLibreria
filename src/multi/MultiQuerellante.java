@@ -93,7 +93,7 @@ public class MultiQuerellante {
      */
     public String nombreByCedula(String cedula) throws SQLException, Exception {
         String nombreQuere = "";
-        String query = "select nombre from tQuerellante where cedula = '"+cedula+"'";
+        String query = "select nombre, apellido1, apellido2 from tQuerellante where cedula = '"+cedula+"'";
         
         conn = new Conector().getConector();
 
@@ -105,5 +105,6 @@ public class MultiQuerellante {
         
         return nombreQuere;
     }
+    
     
 }

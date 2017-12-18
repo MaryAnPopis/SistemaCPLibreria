@@ -25,6 +25,12 @@ public class Persona {
         this.apellido2 = apellido2;
         this.telefono = telefono;
     }
+    
+    public Persona(String nombre, String apellido1, String apellido2) {
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+    }
 
     public String getNombre() {
         return nombre;
@@ -58,4 +64,10 @@ public class Persona {
         this.telefono = telefono;
     }
 
+    @Override
+    public String toString() {
+        return nombre + " " + apellido1 + " " + apellido2 ;
+    }
+
+    
 }

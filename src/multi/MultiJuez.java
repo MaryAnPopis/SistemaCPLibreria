@@ -87,4 +87,21 @@ public class MultiJuez {
         conn.finalize();
         return miJuez;
     }
+    
+    
+    public int getJuezIdByUsername(String usernme) throws Exception{
+        String query = "select id_juez from tjuez where usuario = '"+usernme+"';" ;
+        int id_juez = 0 ;
+        conn = new Conector().getConector();
+
+        ResultSet rs = conn.ejecutarSQL(query, true);
+
+        while (rs.next()) {
+           id_juez = rs.getInt("id_juez");
+
+        }
+        conn.finalize();
+        return id_juez;
+        
+    }
 }

@@ -17,6 +17,10 @@ public class Querellante extends Persona {
         this.id_querellante = id_querellante;
     }
 
+    public Querellante(String nombre, String apellido1, String apellido2) {
+        super(nombre, apellido1, apellido2);
+    }
+    
     public Querellante(String cedula) {
         this.cedula = cedula;
     }
@@ -48,7 +52,7 @@ public class Querellante extends Persona {
 
     @Override
     public String toString() {
-        return "Querellante{" + "id_querellante=" + id_querellante + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", cedula=" + cedula + ", telefono=" + telefono + ", direccion=" + direccion + '}';
+        return nombre + " " + apellido1 + " " + apellido2;
     }
 
 }

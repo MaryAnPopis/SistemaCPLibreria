@@ -10,18 +10,20 @@ import java.time.LocalDate;
  */
 public class Caso {
     private String numero; 
-    private String descripcion; 
+    private LocalDate fecha;
     private Querellante demandante;
     private Juez mediador;
-    private int estado;
-    private LocalDate fecha;
+    private int estado;    
+    private String estadoNombre;
+    private String descripcion; 
 
-    public Caso(String numero, Querellante demandante, Juez mediador, int estado, LocalDate fecha, String descripcion) {
+    
+    
+    public Caso(String numero, LocalDate fecha,Querellante demandante, String estadoNombre, String descripcion) {
         this.numero = numero;
         this.descripcion = descripcion;
         this.demandante = demandante;
-        this.mediador = mediador;
-        this.estado = estado;
+        this.estadoNombre = estadoNombre;
         this.fecha = fecha;
     }
 
@@ -72,13 +74,19 @@ public class Caso {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
+    
+    public String getEstadoNombre() {
+        return estadoNombre;
+    }
+
+    public void setEstadoNombre(String estadoNombre) {
+        this.estadoNombre = estadoNombre;
+    }
 
     @Override
     public String toString() {
-        return "Caso{" + "numero=" + numero + ", descripcion=" + descripcion + ", demandante=" + demandante + ", mediador=" + mediador + ", estado=" + estado + ", fecha=" + fecha + '}';
+        return "Caso{" + "numero=" + numero + ", fecha=" + fecha + ", demandante=" + demandante + ", estadoNombre=" + estadoNombre + ", descripcion=" + descripcion + '}';
     }
-    
-    
     
     
     

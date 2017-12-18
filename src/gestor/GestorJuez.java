@@ -37,4 +37,14 @@ public class GestorJuez {
         Juez miJuez = juez.logIn(username, password);
         return miJuez;
     }
+    
+    
+    public int getJuezIdByUsername(String usernme) throws Exception{
+        MultiJuez juez = new MultiJuez();
+        int id_juez = juez.getJuezIdByUsername(usernme) ;
+        
+        return id_juez;
+    }
+    
+    
 }
