@@ -24,11 +24,11 @@ public class MultiCaso {
 
     private AccesoBD conn;
 
-    public void crear(String numero, int id_demandante, int id_mediador, int id_estado, LocalDate fecha, String descripcion) throws Exception {
+    public void crear(String numero, int id_demandante, int id_mediador, int id_estado, LocalDate fecha, String descripcion, String comentarioInicial) throws Exception {
 
         String query;
-        query = "INSERT INTO tCaso(numero_caso, descripcion, fecha_registro, id_estado, id_juez, id_querellante)"
-                + "VALUES ('" + numero + "','" + descripcion + "', '" + fecha + "'," + id_estado + " , " + id_mediador + " , " + id_demandante + " );";
+        query = "INSERT INTO tCaso(numero_caso, descripcion, fecha_registro, id_estado, id_juez, id_querellante, comentario_estado)"
+                + "VALUES ('" + numero + "','" + descripcion + "', '" + fecha + "'," + id_estado + " , " + id_mediador + " , " + id_demandante + ", '"+comentarioInicial+"' );";
 
         conn = new Conector().getConector();
 
@@ -77,7 +77,7 @@ public class MultiCaso {
 
         ArrayList<Caso> listCasos = new ArrayList<>();
         String query = "select numero_caso, fecha_registro, id_querellante, descripcion, "
-                + "id_estado from tCaso  where id_juez =  "+id_juez+"";
+                + "id_estado, comentario_estado from tCaso  where id_juez =  "+id_juez+"";
 
         conn = new Conector().getConector();
 
@@ -87,7 +87,7 @@ public class MultiCaso {
             Date d = rs.getDate("fecha_registro");
             listCasos.add(new Caso(rs.getString(1), d.toLocalDate(), 
                     multi.getQuerellanteById(rs.getInt(3)), getEstadoById(rs.getInt("id_estado")), 
-                    rs.getString("descripcion")));
+                    rs.getString("descripcion"), rs.getString("comentario_estado")));
 
         }
         conn.finalize();
@@ -98,7 +98,7 @@ public class MultiCaso {
     public ArrayList<Caso> getListaCasosByQuerellante(int id_querellante) throws SQLException, Exception {
 
         ArrayList<Caso> listCasos = new ArrayList<>();
-        String query = "select numero_caso, fecha_registro, id_juez, descripcion, id_estado "
+        String query = "select numero_caso, fecha_registro, id_juez, descripcion, id_estado, comentario_estado "
                 + "from tCaso  where id_querellante =  "+id_querellante+"";
 
         conn = new Conector().getConector();
@@ -109,7 +109,7 @@ public class MultiCaso {
             Date d = rs.getDate("fecha_registro");
             listCasos.add(new Caso(rs.getString(1), d.toLocalDate(), 
                     mulJuez.getJuezById(rs.getInt(3)), getEstadoById(rs.getInt("id_estado")), 
-                    rs.getString("descripcion")));
+                    rs.getString("descripcion"), rs.getString("comentario_estado")));
 
         }
         conn.finalize();

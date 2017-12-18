@@ -16,24 +16,26 @@ public class Caso {
     private int estado;    
     private String estadoNombre;
     private String descripcion; 
-
+    private String comentarioEstado;
     
     
-    public Caso(String numero, LocalDate fecha,Querellante demandante, String estadoNombre, String descripcion) {
+    public Caso(String numero, LocalDate fecha,Querellante demandante, String estadoNombre, String descripcion, String comentarioCaso) {
         this.numero = numero;
         this.descripcion = descripcion;
         this.demandante = demandante;
         this.estadoNombre = estadoNombre;
         this.fecha = fecha;
+        this.comentarioEstado = comentarioCaso;
     }
     
     
-    public Caso(String numero, LocalDate fecha,Juez mediador, String estadoNombre, String descripcion) {
+    public Caso(String numero, LocalDate fecha,Juez mediador, String estadoNombre, String descripcion, String comentarioCaso) {
         this.numero = numero;
         this.descripcion = descripcion;
         this.mediador = mediador;
         this.estadoNombre = estadoNombre;
         this.fecha = fecha;
+        this.comentarioEstado = comentarioCaso;
     }
 
     public String getNumero() {
@@ -92,9 +94,19 @@ public class Caso {
         this.estadoNombre = estadoNombre;
     }
 
+    public String getComentarioEstado() {
+        return comentarioEstado;
+    }
+
+    public void setComentarioEstado(String comentarioEstado) {
+        this.comentarioEstado = comentarioEstado;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "Caso{" + "numero=" + numero + ", fecha=" + fecha + ", demandante=" + demandante + ", estadoNombre=" + estadoNombre + ", descripcion=" + descripcion + '}';
+        return "Caso{" + "numero=" + numero + ", fecha=" + fecha + ", demandante=" + demandante + ", estadoNombre=" + estadoNombre + ", descripcion=" + descripcion + ", comentario" + comentarioEstado + '}';
     }
     
     

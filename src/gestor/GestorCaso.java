@@ -28,13 +28,14 @@ public class GestorCaso {
      * @param estado estado del caso
      * @param fecha fecha de creacion
      * @param descripcion descripcion del caso
+     * @param comentarioInicial comentario inicial de estado
      * @throws ClassNotFoundException
      * @throws SQLException
      * @throws Exception 
      */
-    public void registrarCaso(String numero, int id_demandante, int id_mediador, int estado, LocalDate fecha, String descripcion) throws ClassNotFoundException, SQLException, Exception {
+    public void registrarCaso(String numero, int id_demandante, int id_mediador, int estado, LocalDate fecha, String descripcion, String comentarioInicial) throws ClassNotFoundException, SQLException, Exception {
         MultiCaso caso = new MultiCaso();           
-        caso.crear(numero, id_demandante, id_mediador, estado, fecha, descripcion);
+        caso.crear(numero, id_demandante, id_mediador, estado, fecha, descripcion, comentarioInicial);
     }
     /**
      * Este metodo guarda el id de un querellante
