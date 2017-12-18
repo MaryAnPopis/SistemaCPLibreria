@@ -104,4 +104,23 @@ public class MultiJuez {
         return id_juez;
         
     }
+    
+    public Juez getJuezById(int id_juez) throws Exception{
+        Juez quere = null;
+        String query = "SELECT nombre, apellido1, apellido2 FROM tJuez "
+                + "WHERE id_juez = '"+ id_juez +"';";
+          
+
+        conn = new Conector().getConector();
+
+        ResultSet rs = conn.ejecutarSQL(query, true);
+
+        while (rs.next()) {
+            quere = new Juez(rs.getString(1), rs.getString(2), rs.getString(3)   );  
+        }
+
+        conn.finalize();
+
+        return quere;
+    }
 }

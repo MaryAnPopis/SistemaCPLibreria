@@ -37,4 +37,11 @@ public class GestorQuerellante {
 
         return nombreQuere;
     }
+    
+    public int getQuerellanteIdByCedula(String cedula) throws Exception{
+        MultiQuerellante juez = new MultiQuerellante();
+        int id_querellante = juez.getIdByCedula(cedula) ;
+        
+        return id_querellante;
+    }
 }

@@ -89,7 +89,7 @@ public class UICP {
                 break;
 
             case 11:
-                int id = gestorJuez.getJuezIdByUsername("mariam");
+                int id = gestorQuerellante.getQuerellanteIdByCedula("123");
                 System.out.println(id);
                 break;
             default:

@@ -6,9 +6,8 @@ public class Querellante extends Persona {
     private String cedula;
     private String direccion;
 
-    public Querellante(int id_querellante, String nombre, String apellido1, String apellido2, String cedula, String telefono, String direccion) {
+    public Querellante(String nombre, String apellido1, String apellido2, String cedula, String telefono, String direccion) {
         super(nombre, apellido1, apellido2, telefono);
-        this.id_querellante = id_querellante;
         this.cedula = cedula;
         this.direccion = direccion;
     }

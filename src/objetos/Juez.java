@@ -27,6 +27,12 @@ public class Juez extends Persona {
         this.clave = clave;
     }
 
+    public Juez(String nombre, String apellido1, String apellido2) {
+        super(nombre, apellido1, apellido2);
+    }
+    
+    
+
     public Juez(int id_juez) {
         this.id_juez = id_juez;
     }
@@ -73,7 +79,7 @@ public class Juez extends Persona {
 
     @Override
     public String toString() {
-        return "Juez{" + "nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", telefono=" + telefono + ", numero_sala=" + numero_sala + ", usuario=" + usuario + ", clave=" + clave + ", cedula=" + cedula + '}';
+        return  nombre + " " + apellido1 + " " + apellido2 ;
     }
 
 }

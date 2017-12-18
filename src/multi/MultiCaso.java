@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import objetos.Caso;
-import objetos.Persona;
+import objetos.Juez;
 import objetos.Querellante;
 
 /**
@@ -76,38 +76,44 @@ public class MultiCaso {
     public ArrayList<Caso> getListaCasosByJuez(int id_juez) throws SQLException, Exception {
 
         ArrayList<Caso> listCasos = new ArrayList<>();
-        String query = "select numero_caso, fecha_registro, id_querellante, descripcion, id_estado from tCaso  where id_juez =  "+id_juez+"";
+        String query = "select numero_caso, fecha_registro, id_querellante, descripcion, "
+                + "id_estado from tCaso  where id_juez =  "+id_juez+"";
 
         conn = new Conector().getConector();
 
         ResultSet rs = conn.ejecutarSQL(query, true);
-
+        MultiQuerellante multi = new MultiQuerellante();    
         while (rs.next()) {
             Date d = rs.getDate("fecha_registro");
-            listCasos.add(new Caso(rs.getString(1), d.toLocalDate(), getQuerellanteById(rs.getInt(3)), getEstadoById(rs.getInt("id_estado")), rs.getString("descripcion")));
+            listCasos.add(new Caso(rs.getString(1), d.toLocalDate(), 
+                    multi.getQuerellanteById(rs.getInt(3)), getEstadoById(rs.getInt("id_estado")), 
+                    rs.getString("descripcion")));
 
         }
         conn.finalize();
         return listCasos;
     }
     
-    public Querellante getQuerellanteById(int id_querellante) throws Exception{
-        Querellante quere = null;
-        String query = "SELECT nombre, apellido1, apellido2 FROM tQuerellante "
-                + "WHERE id_querellante = '"+ id_querellante +"';";
-          
+    
+    public ArrayList<Caso> getListaCasosByQuerellante(int id_querellante) throws SQLException, Exception {
+
+        ArrayList<Caso> listCasos = new ArrayList<>();
+        String query = "select numero_caso, fecha_registro, id_juez, descripcion, id_estado "
+                + "from tCaso  where id_querellante =  "+id_querellante+"";
 
         conn = new Conector().getConector();
 
         ResultSet rs = conn.ejecutarSQL(query, true);
-
+        MultiJuez mulJuez = new MultiJuez();
         while (rs.next()) {
-            quere = new Querellante(rs.getString(1), rs.getString(2), rs.getString(3)   );  
+            Date d = rs.getDate("fecha_registro");
+            listCasos.add(new Caso(rs.getString(1), d.toLocalDate(), 
+                    mulJuez.getJuezById(rs.getInt(3)), getEstadoById(rs.getInt("id_estado")), 
+                    rs.getString("descripcion")));
+
         }
-
         conn.finalize();
-
-        return quere;
+        return listCasos;
     }
     
     

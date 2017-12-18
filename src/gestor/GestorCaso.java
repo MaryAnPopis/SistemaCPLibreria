@@ -85,5 +85,13 @@ public class GestorCaso {
         
         return listCasosMulti;
     }
+    
+    public ArrayList<Caso> getCasosByQuerellante(int id_querellante) throws Exception{
+        ArrayList<Caso> listCasosMulti;
+        MultiCaso casoNuevo = new MultiCaso();
+        listCasosMulti = casoNuevo.getListaCasosByQuerellante(id_querellante);
+        
+        return listCasosMulti;
+    }
 }
 

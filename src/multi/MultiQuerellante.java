@@ -54,7 +54,6 @@ public class MultiQuerellante {
 
         while (rs.next()) {
             Querellante querellante = new Querellante(
-                    rs.getInt("id_querellante"),
                     rs.getString("nombre"),
                     rs.getString("apellido1"),
                     rs.getString("apellido2"),
@@ -106,5 +105,39 @@ public class MultiQuerellante {
         return nombreQuere;
     }
     
+    public Querellante getQuerellanteById(int id_querellante) throws Exception{
+        Querellante quere = null;
+        String query = "SELECT nombre, apellido1, apellido2 FROM tQuerellante "
+                + "WHERE id_querellante = '"+ id_querellante +"';";
+          
+
+        conn = new Conector().getConector();
+
+        ResultSet rs = conn.ejecutarSQL(query, true);
+
+        while (rs.next()) {
+            quere = new Querellante(rs.getString(1), rs.getString(2), rs.getString(3)   );  
+        }
+
+        conn.finalize();
+
+        return quere;
+    }
+    
+    
+    public int getIdByCedula(String cedula) throws SQLException, Exception {
+        int id_querellante = 0;
+        String query = "select id_querellante from tQuerellante where cedula = '"+cedula+"'";
+        
+        conn = new Conector().getConector();
+
+        ResultSet rs = conn.ejecutarSQL(query, true);
+        
+        while (rs.next()) {
+            id_querellante = rs.getInt("id_querellante");
+        }
+        
+        return id_querellante;
+    }
     
 }

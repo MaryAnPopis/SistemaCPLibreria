@@ -26,6 +26,15 @@ public class Caso {
         this.estadoNombre = estadoNombre;
         this.fecha = fecha;
     }
+    
+    
+    public Caso(String numero, LocalDate fecha,Juez mediador, String estadoNombre, String descripcion) {
+        this.numero = numero;
+        this.descripcion = descripcion;
+        this.mediador = mediador;
+        this.estadoNombre = estadoNombre;
+        this.fecha = fecha;
+    }
 
     public String getNumero() {
         return numero;
