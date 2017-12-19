@@ -135,4 +135,67 @@ public class MultiCaso {
 
         return nombre;
     }
+    
+    public int getIdCasoByNumero(String numeroCaso) throws Exception{
+        int id_caso = 0;
+        
+        String query = "select id_caso from tCaso where numero_caso = '"+numeroCaso+"' ;";
+        conn = new Conector().getConector();
+
+        ResultSet rs = conn.ejecutarSQL(query, true);
+ 
+        while (rs.next()) {
+            id_caso = rs.getInt("id_caso");  
+        }
+
+        conn.finalize();
+
+        
+        return id_caso;
+    }
+    
+    public int getIdEstadoByIdCaso(int idCaso) throws Exception{
+        int id_estado = 0;
+        
+        String query = "select id_estado from tCaso where id_caso = "+idCaso+";";
+        
+        conn = new Conector().getConector();
+
+        ResultSet rs = conn.ejecutarSQL(query, true);
+ 
+        while (rs.next()) {
+            id_estado = rs.getInt("id_estado");  
+        }
+
+        conn.finalize();
+        
+        return id_estado;
+    }
+    
+    
+    public void updateCaso(int idEstado, String comentario, int idCaso) throws Exception{
+        String query = "update tCaso "
+                + "set id_estado = "+idEstado+", comentario_estado = '"+comentario+"' "
+                + "where id_caso = "+idCaso+";";
+        
+        
+        conn = new Conector().getConector();
+
+        conn.ejecutarSQL(query);
+        conn.finalize();
+
+        
+    }
+    
+    public void insertarHistorial(String comentario, int idEstado, int idCaso, LocalDate fechaCambio) throws Exception{
+        String query = "insert into tHistorialCasos(comentario_estado, id_estado, id_caso, fecha_cambio)" +
+                        "values ('"+comentario+"', "+idEstado+" , "+idCaso+", '"+fechaCambio+"');";
+        
+        
+        conn = new Conector().getConector();
+
+        conn.ejecutarSQL(query);
+        conn.finalize();
+    }
 }
+

@@ -94,5 +94,32 @@ public class GestorCaso {
         
         return listCasosMulti;
     }
+    
+    public int getIdCasoByNumero(String numeroCaso) throws Exception{
+        int id_caso;
+        MultiCaso caso = new MultiCaso();
+        id_caso = caso.getIdCasoByNumero(numeroCaso);
+        
+        return id_caso;
+    }
+    
+    public int getIdEstadoByIdCaso(int idCaso) throws Exception{
+        int idEstado;
+        MultiCaso caso = new MultiCaso();
+        idEstado = caso.getIdEstadoByIdCaso(idCaso);
+        
+        return idEstado;
+    }
+    
+    public void modificarEstado(int idEstado, String comentario, int idCaso) throws ClassNotFoundException, SQLException, Exception {
+        MultiCaso caso = new MultiCaso();           
+        caso.updateCaso(idEstado, comentario, idCaso);
+    }
+    
+    public void registrarHistorial(String comentario, int idEstado, int idCaso, LocalDate fechaCambio) throws ClassNotFoundException, SQLException, Exception {
+        MultiCaso caso = new MultiCaso();           
+        caso.insertarHistorial(comentario, idEstado, idCaso, fechaCambio);
+    }
 }
+
 
