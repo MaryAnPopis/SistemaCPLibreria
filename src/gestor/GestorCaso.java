@@ -136,6 +136,14 @@ public class GestorCaso {
         
         return nombreCaso;
     }
+    
+    public ArrayList<Caso> getHistorialByCaso(int idCaso) throws Exception{
+        ArrayList<Caso> listCasosMulti;
+        MultiCaso casoNuevo = new MultiCaso();
+        listCasosMulti = casoNuevo.getHistorialCaso(idCaso);
+        
+        return listCasosMulti;
+    }
 }
 
 

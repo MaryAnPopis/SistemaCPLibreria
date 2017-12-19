@@ -38,6 +38,15 @@ public class Caso {
         this.comentarioEstado = comentarioCaso;
     }
 
+    public Caso(LocalDate fecha, String comentarioEstado, String estadoNombre) {
+        this.fecha = fecha;
+        this.comentarioEstado = comentarioEstado;
+        this.estadoNombre = estadoNombre;
+        
+    }
+    
+    
+
     public String getNumero() {
         return numero;
     }

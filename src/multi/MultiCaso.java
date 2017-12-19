@@ -216,5 +216,22 @@ public class MultiCaso {
         
         return comentario;
     }
+    
+    public ArrayList<Caso> getHistorialCaso(int idCaso) throws Exception{
+        String query = "select comentario_estado, id_estado, fecha_cambio from tHistorialCasos where id_caso = "+idCaso+";";
+        ArrayList<Caso> listCasos = new ArrayList<>();
+        conn = new Conector().getConector();
+
+        ResultSet rs = conn.ejecutarSQL(query, true);
+
+        
+        while (rs.next()) {
+            Date d = rs.getDate("fecha_cambio");
+            listCasos.add(new Caso( d.toLocalDate(), rs.getString("comentario_estado"), getEstadoById(rs.getInt("id_estado"))));
+
+        }
+        conn.finalize();
+        return listCasos;
+    }
 }
 
