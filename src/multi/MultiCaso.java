@@ -197,5 +197,24 @@ public class MultiCaso {
         conn.ejecutarSQL(query);
         conn.finalize();
     }
+    
+    
+    public String getComentarioByIdCaso(int idCaso) throws Exception{
+     
+        String comentario = "";
+        String query = "select comentario_estado from tCaso where id_caso = "+idCaso+";";
+        
+        conn = new Conector().getConector();
+
+        ResultSet rs = conn.ejecutarSQL(query, true);
+ 
+        while (rs.next()) {
+            comentario = rs.getString("comentario_estado");  
+        }
+
+        conn.finalize();
+        
+        return comentario;
+    }
 }
 

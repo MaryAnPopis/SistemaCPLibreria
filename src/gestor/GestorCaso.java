@@ -120,6 +120,22 @@ public class GestorCaso {
         MultiCaso caso = new MultiCaso();           
         caso.insertarHistorial(comentario, idEstado, idCaso, fechaCambio);
     }
+    
+    public String getComentarioByIdCaso(int idCaso) throws Exception{
+        String detalle;
+        MultiCaso caso = new MultiCaso();
+        detalle = caso.getComentarioByIdCaso(idCaso);
+        
+        return detalle;
+    }
+    
+    public String getEstadoById(int idEstado) throws Exception{
+        String nombreCaso;
+        MultiCaso caso = new MultiCaso();
+        nombreCaso = caso.getEstadoById(idEstado);
+        
+        return nombreCaso;
+    }
 }
 
 
