@@ -8,13 +8,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
- * @author Dell
+ * @author Mariam Dominguez y Daniel Rodriguez
+ * @version 1.0 6/12/2017
  */
 public class MultiSecretario {
 
     private AccesoBD conn;
-
+    /**
+     * Inserta los parametros recibidos en una tabla de
+     * la base de datos
+     * @param nombre nombre del secretario de justicia
+     * @param apellido1 apellido paterno del secretario
+     * @param apellido2 apellido materno del seretario
+     * @param telefono telefono del secretario
+     * @param usuario nombre de usuario del secretario
+     * @param clave contaseña del secretario
+     * @throws Exception 
+     */
     public void crear(String nombre, String apellido1, String apellido2, String telefono, String usuario, String clave) throws Exception {
 
         String query;
@@ -26,7 +36,11 @@ public class MultiSecretario {
         conn.ejecutarSQL(query);
 
     }
-
+    /**
+     * Llena un ArrayList con secretario de la corte
+     * @return ArrauList de secretario
+     * @throws Exception 
+     */
     public ArrayList<Secretario> listarSecretario() throws Exception {
         ArrayList<Secretario> listSecretario = new ArrayList<>();
 
@@ -60,7 +74,7 @@ public class MultiSecretario {
      * @param username nombre de usuario del juez a buscar en la base de datos
      * @param password contraseña a buscar en la base de datos
      * @return juez de tipo Juez
-     * @throws SQLException expecion de Sql
+     * @throws SQLException excepción de Sql
      * @throws Exception
      */
     public Secretario logIn(String username, String password) throws SQLException, Exception {

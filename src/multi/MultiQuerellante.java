@@ -10,8 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Dell
+ * @author Mariam Dominguez y Daniel Rodriguez
+ * @version 1.0 6/12/2017
  */
 public class MultiQuerellante {
 
@@ -20,10 +20,10 @@ public class MultiQuerellante {
      * Registra un querellante en la base de datos
      * @param nombre nombre del querellante
      * @param apellido1 apellido del querellante
-     * @param apellido2
-     * @param cedula
-     * @param telefono
-     * @param direccion 
+     * @param apellido2 apellido materno del querellante
+     * @param cedula cedula del querellante
+     * @param telefono telefono del querellante
+     * @param direccion direccion del querellante
      */
     public void registarQuerellante(String nombre, String apellido1, String apellido2, String cedula, String telefono, String direccion) {
 
@@ -41,7 +41,12 @@ public class MultiQuerellante {
         }
 
     }
-
+    /**
+     * Llena un  ArrayList con todos los querellante
+     * registrados en la base de datos
+     * @return ArrayList de querellantes
+     * @throws Exception 
+     */
     public ArrayList<Querellante> listarQuerellante() throws Exception {
         ArrayList<Querellante> listQuerellante = new ArrayList<>();
 
@@ -66,7 +71,14 @@ public class MultiQuerellante {
         return listQuerellante;
 
     }
-
+    /**
+     * Busca la cedula del querellante
+     * en la tabla querellantes y la retorna si la encuentra
+     * registrada
+     * @param cedula cedula del querellante
+     * @return Querellante cedula
+     * @throws Exception 
+     */
     public Querellante logIn(String cedula) throws Exception {
         Querellante miQuerellante = null;
 
@@ -104,7 +116,13 @@ public class MultiQuerellante {
         
         return nombreQuere;
     }
-    
+    /**
+     * Obtiene el nombre, apellido materno y paterno de un
+     * querellante por medio del id de este
+     * @param id_querellante id del querellante
+     * @return Querellante nombre, apellidos
+     * @throws Exception 
+     */
     public Querellante getQuerellanteById(int id_querellante) throws Exception{
         Querellante quere = null;
         String query = "SELECT nombre, apellido1, apellido2 FROM tQuerellante "
@@ -124,7 +142,14 @@ public class MultiQuerellante {
         return quere;
     }
     
-    
+    /**
+     * Obtiene el id del querellante por medio
+     * de la cedula de este
+     * @param cedula cedula del querellante
+     * @return int id del querellante
+     * @throws SQLException
+     * @throws Exception 
+     */
     public int getIdByCedula(String cedula) throws SQLException, Exception {
         int id_querellante = 0;
         String query = "select id_querellante from tQuerellante where cedula = '"+cedula+"'";

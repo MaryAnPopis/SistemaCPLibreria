@@ -4,9 +4,8 @@ package objetos;
 import java.time.LocalDate;
 
 /**
- *
- * @author Mariam Domínguez y Daniel Rodriguez
- * @version 1.0 17/12/2017
+ * @author Mariam Dominguez y Daniel Rodriguez
+ * @version 2.0 17/12/2017
  */
 public class Caso {
     private String numero; 
@@ -18,7 +17,16 @@ public class Caso {
     private String descripcion; 
     private String comentarioEstado;
     
-    
+    /**
+     * Constructor que recibe diferentes atributos
+     * para el registro departe de un juez
+     * @param numero numero de caso
+     * @param fecha fecha de creacion
+     * @param demandante querellante a cargo del caso
+     * @param estadoNombre nombre del estado
+     * @param descripcion descripcion del caso
+     * @param comentarioCaso detalle del estado del caso
+     */
     public Caso(String numero, LocalDate fecha,Querellante demandante, String estadoNombre, String descripcion, String comentarioCaso) {
         this.numero = numero;
         this.descripcion = descripcion;
@@ -28,7 +36,16 @@ public class Caso {
         this.comentarioEstado = comentarioCaso;
     }
     
-    
+    /**
+     * Constructor que recibe diferentes atributos
+     * para el registro departe de un querellante 
+     * @param numero numero de caso
+     * @param fecha fecha de creacion
+     * @param mediador juez a cargo del caso
+     * @param estadoNombre nombre del estado
+     * @param descripcion descripcion del caso
+     * @param comentarioCaso detalle del estado del caso
+     */
     public Caso(String numero, LocalDate fecha,Juez mediador, String estadoNombre, String descripcion, String comentarioCaso) {
         this.numero = numero;
         this.descripcion = descripcion;
@@ -37,7 +54,13 @@ public class Caso {
         this.fecha = fecha;
         this.comentarioEstado = comentarioCaso;
     }
-
+    /**
+     * Constructor que recibe atributos para 
+     * la actualizacion de caso y registro del historial
+     * @param fecha fehca de cambio
+     * @param comentarioEstado detalle del estado
+     * @param estadoNombre nombre de estado
+     */
     public Caso(LocalDate fecha, String comentarioEstado, String estadoNombre) {
         this.fecha = fecha;
         this.comentarioEstado = comentarioEstado;

@@ -8,11 +8,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ * @author Mariam Dominguez y Daniel Rodriguez
+ * @version 1.0 6/12/2017
+ */
 public class MultiJuez {
     private AccesoBD conn;
     
-    
+    /**
+     * Metdo que por medio de un query enviado a la base de datos
+     * registra un juez en la tabla tJuez 
+     * @param nombre nombre del juez
+     * @param apellido1 apellido paterno del juez
+     * @param apellido2 apellido materno del juez
+     * @param cedula cedula del juez
+     * @param telefono telefono del juez
+     * @param numero_sala numero de sala a la que pertenecera
+     * @param usuario nombre de usuario del juez
+     * @param clave contaseña del juez
+     */
     public void crear(String nombre, String apellido1, String apellido2, String cedula, String telefono, String numero_sala, String usuario, String clave) {
 
         String query;
@@ -30,7 +44,11 @@ public class MultiJuez {
         }
         conn.finalize();
     }
-
+    /**
+     * Llena un ArrayList con jueces 
+     * @return ArrayList con jueces registrados
+     * @throws Exception 
+     */
     public ArrayList<Juez> listarJuez() throws Exception {
         ArrayList<Juez> listJuez = new ArrayList<>();
 
@@ -88,7 +106,13 @@ public class MultiJuez {
         return miJuez;
     }
     
-    
+    /**
+     * Obtiene el id del juez por medio del 
+     * nombre de usuario de este
+     * @param usernme nombre de usuario del juez
+     * @return int id del juez
+     * @throws Exception 
+     */
     public int getJuezIdByUsername(String usernme) throws Exception{
         String query = "select id_juez from tjuez where usuario = '"+usernme+"';" ;
         int id_juez = 0 ;
@@ -104,7 +128,13 @@ public class MultiJuez {
         return id_juez;
         
     }
-    
+    /**
+     * Obtiene el nombre, apellido paterno y materno de 
+     * un juez por medio del id de este
+     * @param id_juez id del juez
+     * @return Juez 
+     * @throws Exception 
+     */
     public Juez getJuezById(int id_juez) throws Exception{
         Juez quere = null;
         String query = "SELECT nombre, apellido1, apellido2 FROM tJuez "
